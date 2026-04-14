@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+    - main
+
+name: Node_Build_Workflow
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    # checkout the repo
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@main
+
+    - uses: azure/docker-login@v1
+      with:
+        login-server: containerregistryaks1.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+    - run: |
+        docker build . -t containerregistryaks1.azurecr.io/nodejssampleapp-action:${{ github.sha }}
+        docker push containerregistryaks1.azurecr.io/nodejssampleapp-action:${{ github.sha }} 
