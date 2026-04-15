@@ -27,4 +27,4 @@ jobs:
       with:
         app-name: 'actions-appt'
         publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-        images: 'contoso.azurecr.io/nodejssampleapp:${{ github.sha }}'
+        images: 'containerregistryaks1.azurecr.io/nodejssampleapp:${{ github.sha }}'
