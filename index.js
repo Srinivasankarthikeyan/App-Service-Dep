@@ -52,7 +52,7 @@ app.get('/app-d/*', (req, res) => {
 
 // Optional root
 app.get('/', (req, res) => {
-  res.send('Root endpoint');
+  res.send('Root endpoint from actions');
 });
 
 app.listen(port, () => {
